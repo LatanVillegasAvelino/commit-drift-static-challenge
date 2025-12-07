@@ -1,105 +1,197 @@
-/* src/css/main.css */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
-
+/* Variables para un esquema de colores CLARO (Profesional) */
 :root {
-    --color-bg: #1e1e1e;
-    --color-text: #00ff00;
-    --color-error: #ff3333;
-    --color-warning: #ffcc00;
-}
-
-html, body {
-    /* Asegura que el html y el body cubran toda la pantalla */
-    margin: 0;
-    padding: 0;
-    height: 100%; 
+    --color-background: #F8F8F8;        /* Fondo claro (casi blanco) */
+    --color-terminal-bg: #EAEAEA;       /* Fondo de consola un poco más oscuro */
+    --color-text: #1C1C1C;              /* Texto principal (negro profundo) */
+    --color-prompt: #888888;            /* Color del símbolo > */
+    --color-success: #007A5A;           /* Verde de éxito (Git: commit) */
+    --color-error: #D73A49;             /* Rojo de error (Bug, Deuda) */
+    --color-button-bg: #E6E6E6;
+    --color-button-hover: #D0D0D0;
+    --color-border: #BBBBBB;
+    --color-level-track: #555555;       /* Carril del progreso */
+    --color-shop-bg: #FFFFFF;
 }
 
 body {
-    background-color: var(--color-bg);
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: var(--color-background);
     color: var(--color-text);
-    font-family: 'Fira Code', monospace;
-    padding: 20px;
-    
-    /* MODIFICACIÓN CLAVE: Mantiene el centrado horizontal (justify-content: center;) */
-    /* PERO ELIMINA EL CENTRADO VERTICAL ESTRICTO (align-items: center;) */
     display: flex;
     justify-content: center;
-    /* La línea align-items: center; fue eliminada aquí */
-    
+    align-items: center;
     min-height: 100vh;
-    width: 100vw; 
+    margin: 0;
+    padding: 20px;
 }
 
 #game-container {
     width: 90%;
     max-width: 800px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-h1 {
-    font-size: 1.5em;
-    border-bottom: 2px solid var(--color-text);
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-}
-
-.dashboard {
-    background-color: #0d0d0d;
-    border: 1px solid var(--color-text);
+/* Tablero de Estado */
+#stats-board {
     padding: 10px;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#stats-board h2 {
+    color: var(--color-success);
+    margin-top: 0;
+    border-bottom: 1px dashed var(--color-prompt);
+}
+
+/* Visor de Progreso (La Pista de la Moto) */
+#progress-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    background-color: var(--color-terminal-bg);
+    border: 1px solid var(--color-level-track);
+    border-radius: 5px;
     margin-bottom: 20px;
+    position: relative;
+    padding: 0 10px;
 }
 
-.dashboard p {
-    margin: 5px 0;
+#track-start, #track-end {
+    font-size: 0.8em;
+    color: var(--color-level-track);
+    z-index: 1;
 }
 
-.console {
-    background-color: #0d0d0d;
-    border: 1px solid var(--color-text);
+#motorcycle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    transition: left 0.5s ease-out; /* Suavidad en el movimiento */
+    z-index: 2;
+}
+
+
+/* Consola (Terminal) */
+#console-output {
     height: 250px;
     overflow-y: auto;
-    padding: 10px;
-    font-size: 0.9em;
+    background-color: var(--color-terminal-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 15px;
     margin-bottom: 20px;
-}
-
-.console p {
-    margin: 0;
+    white-space: pre-wrap;
+    font-size: 0.9em;
     line-height: 1.4;
 }
 
-/* Estilos de mensajes en consola */
-.log-info { color: var(--color-text); }
-.log-error { color: var(--color-error); }
-.log-success { color: #33ff33; }
-.log-warning { color: var(--color-warning); }
+.message {
+    margin-bottom: 5px;
+}
+
+.prompt {
+    color: var(--color-prompt);
+    user-select: none;
+}
+
+.bug {
+    color: var(--color-error);
+    font-weight: bold;
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.coin {
+    color: var(--color-text); /* Color de la moneda */
+    font-weight: bold;
+}
+
+/* Animación de Tipeo (Efecto Profesional) */
+.typing-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background-color: var(--color-text);
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1.0; }
+    50% { opacity: 0.0; }
+}
 
 /* Botones */
-#actions button {
-    background-color: var(--color-text);
-    color: var(--color-bg);
-    border: none;
+#action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+button {
+    flex-grow: 1;
     padding: 10px 15px;
+    background-color: var(--color-button-bg);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
     cursor: pointer;
-    margin-right: 10px;
-    font-family: 'Fira Code', monospace;
-    transition: background-color 0.2s;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
-#actions button:hover:not(:disabled) {
-    background-color: #33ff33;
+button:hover:not(:disabled) {
+    background-color: var(--color-button-hover);
+    transform: translateY(-1px);
 }
 
-#actions button:disabled {
-    background-color: #555;
-    color: #bbb;
+button:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
-.footer {
+/* Tienda */
+#shop-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background-color: var(--color-shop-bg);
+    border: 3px solid var(--color-success);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#shop-window h3 {
     text-align: center;
-    font-size: 0.7em;
-    opacity: 0.6;
-    margin-top: 30px;
+    color: var(--color-success);
+    border-bottom: 1px dashed var(--color-prompt);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+#shop-items-container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--color-border);
+}
+
+.hidden {
+    display: none !important;
 }
