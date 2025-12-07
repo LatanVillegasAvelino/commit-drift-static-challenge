@@ -1,4 +1,8 @@
-/* Variables para un esquema de colores CLARO (Profesional) */
+/* src/css/main.css */
+/* Importación de fuente profesional */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+/* Variables para un esquema de colores CLARO (Light Mode) */
 :root {
     --color-background: #F8F8F8;        /* Fondo claro (casi blanco) */
     --color-terminal-bg: #EAEAEA;       /* Fondo de consola un poco más oscuro */
@@ -13,16 +17,24 @@
     --color-shop-bg: #FFFFFF;
 }
 
+/* Base de la ventana para Visibilidad Total */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
-    font-family: 'Consolas', 'Courier New', monospace;
     background-color: var(--color-background);
     color: var(--color-text);
+    font-family: 'Fira Code', monospace;
+    padding: 20px;
+    
+    /* Disposición y centrado */
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    margin: 0;
-    padding: 20px;
+    width: 100vw; 
 }
 
 #game-container {
@@ -30,26 +42,33 @@ body {
     max-width: 800px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    background-color: #FFFFFF;
+    background-color: var(--color-shop-bg);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
-/* Tablero de Estado */
-#stats-board {
-    padding: 10px;
-    border-bottom: 2px solid var(--color-border);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-#stats-board h2 {
+/* Título y Tablero de Estado */
+h2 {
     color: var(--color-success);
     margin-top: 0;
     border-bottom: 1px dashed var(--color-prompt);
+    text-align: center;
 }
+#stats-board {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+}
+#stats-board p { margin: 5px 10px; }
+.coin { color: var(--color-success); }
 
-/* Visor de Progreso (La Pista de la Moto) */
+
+/* Visor de Progreso (Pista de la Moto) */
 #progress-track {
     display: flex;
     align-items: center;
@@ -73,9 +92,13 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5em;
-    transition: left 0.5s ease-out; /* Suavidad en el movimiento */
+    font-size: 1.5em; 
+    
+    /* MEJORA CLAVE: Transición suave para simular movimiento profesional */
+    transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    
     z-index: 2;
+    left: 0; 
 }
 
 
@@ -93,30 +116,13 @@ body {
     line-height: 1.4;
 }
 
-.message {
-    margin-bottom: 5px;
-}
+.message { margin-bottom: 5px; }
+.prompt { color: var(--color-prompt); user-select: none; }
+.bug { color: var(--color-error); font-weight: bold; }
+.success { color: var(--color-success); font-weight: bold; }
+.error { color: var(--color-error); font-weight: bold; }
 
-.prompt {
-    color: var(--color-prompt);
-    user-select: none;
-}
-
-.bug {
-    color: var(--color-error);
-    font-weight: bold;
-}
-
-.success {
-    color: var(--color-success);
-}
-
-.coin {
-    color: var(--color-text); /* Color de la moneda */
-    font-weight: bold;
-}
-
-/* Animación de Tipeo (Efecto Profesional) */
+/* Animación de Tipeo */
 .typing-cursor {
     display: inline-block;
     width: 8px;
@@ -162,26 +168,26 @@ button:disabled {
 
 /* Tienda */
 #shop-window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 500px;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#shop-window > div { /* Contenedor interno de la tienda */
     background-color: var(--color-shop-bg);
     border: 3px solid var(--color-success);
     border-radius: 10px;
     padding: 20px;
-    z-index: 100;
+    width: 90%;
+    max-width: 500px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-#shop-window h3 {
-    text-align: center;
-    color: var(--color-success);
-    border-bottom: 1px dashed var(--color-prompt);
-    padding-bottom: 10px;
-    margin-top: 0;
 }
 
 #shop-items-container div {
@@ -191,7 +197,4 @@ button:disabled {
     padding: 8px 0;
     border-bottom: 1px dotted var(--color-border);
 }
-
-.hidden {
-    display: none !important;
-}
+.hidden { display: none !important; }
