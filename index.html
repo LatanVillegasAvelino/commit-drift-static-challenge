@@ -3,30 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commit Drift: The Static Repository Challenge</title>
-    
-    <link rel="stylesheet" href="src/css/main.css"> 
+    <title>Commit Drift: Technical Debt Racer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏍️</text></svg>">
+    <link rel="stylesheet" href="src/css/main.css">
 </head>
 <body>
     <div id="game-container">
-        <h1>Commit Drift: El Reto Estático</h1>
-
-        <div id="status-output" class="dashboard">
-            </div>
-
-        <div id="console-output" class="console">
-            </div>
-
-        <div id="actions">
-            <button id="commit-btn">COMMIT</button>
-            <button id="fix-btn">FIX BUG</button>
-            <button id="review-btn" disabled>ASK REVIEW (Beta)</button>
+        
+        <div id="stats-board">
+            <h2>Commit Drift: Technical Debt Racer</h2>
+            <p>Nivel: <span id="current-level-name">Inicial</span></p>
+            <p>Créditos de Código (₿): <span id="money-display">0</span></p>
+            <p>Commits (🏁): <span id="commits-display">0</span> / <span id="target-commits-display">10</span></p>
         </div>
 
-        <p class="footer">
-            Desarrollado para GitHub Pages. Versión 1.0.
-            <a href="https://github.com/LatanVillegasAvelino/commit-drift-static-challenge" target="_blank">Ver Código Fuente</a>
-        </p>
+        <div id="progress-track">
+            <div id="track-start">INICIO</div>
+            <div id="motorcycle">🏍️</div>
+            <div id="track-end">FIN</div>
+        </div>
+
+        <div id="console-output" class="terminal">
+            <div class="message welcome-message">
+                > Inicializando Motor de Deuda Técnica... Listo.
+            </div>
+            </div>
+
+        <div id="action-buttons">
+            <button id="commit-btn" data-action="COMMIT" disabled>COMMIT (+1)</button>
+            <button id="fix-btn" data-action="FIX_BUG" disabled>FIX BUG (-1 Bug)</button>
+            <button id="shop-btn" data-action="TOGGLE_SHOP" disabled>SHOP (₿)</button>
+            <button id="reset-btn" data-action="RESET">REINICIAR</button>
+        </div>
+
+        <div id="shop-window" class="hidden">
+            <h3>Tienda de Herramientas (Gasta ₿)</h3>
+            <div id="shop-items-container">
+                </div>
+            <button id="close-shop-btn" data-action="TOGGLE_SHOP">Cerrar Tienda</button>
+        </div>
+        
+        <div id="achievements-window" class="hidden">
+             </div>
+        
     </div>
 
     <script src="src/js/main.js"></script>
