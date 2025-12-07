@@ -8,14 +8,20 @@
     --color-warning: #ffcc00;
 }
 
+html, body {
+    /* CORRECCIÓN FINAL: Asegura que el html y el body cubran toda la pantalla */
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+}
+
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: 'Fira Code', monospace;
     padding: 20px;
-    margin: 0;
     
-    /* CORRECCIÓN: Fuerza el body a ocupar toda la ventana (100vh) */
+    /* Propiedades de centrado y altura mínima */
     display: flex;
     justify-content: center;
     align-items: center;
