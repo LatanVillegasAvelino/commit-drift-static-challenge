@@ -14,10 +14,13 @@ body {
     font-family: 'Fira Code', monospace;
     padding: 20px;
     margin: 0;
+    
+    /* CORRECCIÓN: Fuerza el body a ocupar toda la ventana (100vh) */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    width: 100vw; 
 }
 
 #game-container {
