@@ -1,43 +1,56 @@
-# Commit Drift: The Static Repository Challenge
+# 🚀 Commit Drift: The Static Repository Challenge
 
-[![GitHub Pages Status](https://github.com/[TU_USUARIO]/commit-drift-static-challenge/workflows/github%20pages/badge.svg)](https://[TU_USUARIO].github.io/commit-drift-static-challenge/)
+[![GitHub Pages Status](https://github.com/LatanVillegasAvelino/commit-drift-static-challenge/actions/workflows/pages/pages-build-deployment/badge.svg)](https://latanvillegasavelino.github.io/commit-drift-static-challenge/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Hecho con](https://img.shields.io/badge/Hecho%20con-JavaScript%20Puro-yellow.svg)](https://developer.mozilla.org/es/docs/Web/JavaScript)
 
 ## 🎯 Descripción del Juego
 
-**Commit Drift** es un juego de simulación y gestión de riesgos desarrollado íntegramente en JavaScript para ser desplegado en GitHub Pages. El jugador debe balancear el progreso (Commits) contra la acumulación de Deuda Técnica (Bugs), buscando alcanzar la meta del proyecto antes de que el código colapse.
+**Commit Drift** es un simulador de gestión de riesgos diseñado como una aplicación web estática para **GitHub Pages**.
 
-## ✨ Características
+El jugador asume el rol de un desarrollador en un proyecto con un tiempo limitado y un objetivo de *commits*. La mecánica central obliga a balancear el progreso (`COMMIT`) contra la inevitable acumulación de **Deuda Técnica (Bugs)**. El objetivo es alcanzar la meta de *commits* antes de que el código colapse por el exceso de fallos.
 
-* **Arquitectura Estática Pura:** Cero *backend*. Todo el juego se ejecuta en el navegador.
-* **Mecánica de Riesgo:** Probabilidad constante de introducir un Bug al realizar un `COMMIT`.
-* **Gestión de Deuda Técnica:** La acumulación de Bugs incrementa exponencialmente el riesgo de nuevos fallos (Tech Debt).
-* **Decisión Táctica:** Acciones de `FIX BUG` y `ASK REVIEW` para mitigar riesgos.
-* **Diseño:** Interfaz estilizada como terminal (CLI).
+## ✨ Características Principales
 
-## 🚀 Despliegue (GitHub Pages)
+* **Arquitectura Estática Pura (Frontend-Only):** Todo el juego se ejecuta en el navegador (JavaScript, HTML, CSS), eliminando la necesidad de un *backend* y garantizando la máxima portabilidad y un despliegue gratuito.
+* **Mecánica de Riesgo:** Cada `COMMIT` tiene una probabilidad de introducir *Bugs*.
+* **Gestión de Deuda Técnica:** El número de *Bugs* activos aumenta el riesgo de introducir fallos aún más graves en el futuro.
+* **Interfaz de Consola:** Diseño minimalista que simula una interfaz de línea de comandos (CLI) para una inmersión completa.
 
-Este proyecto está diseñado para desplegarse de inmediato.
+## 🛠️ Pila Técnica y Estructura
 
-**URL de Acceso:** `https://[TU_USUARIO].github.io/commit-drift-static-challenge/`
+El proyecto se basa en los principios de **Código Limpio** y la **Separación de Intereses (SoC)**.
 
-### Instrucciones de Despliegue
+| Componente | Tecnología | Responsabilidad |
+| :--- | :--- | :--- |
+| **Lógica Central** | **`src/js/CommitManager.js`** | Contiene la **clase modelo** que maneja las reglas del juego (probabilidades, *bugs*, victoria/derrota). |
+| **Controlador/UI** | **`src/js/main.js`** | Funciona como el **controlador**. Se encarga de la manipulación del DOM y de traducir los clics de los botones en llamadas a la lógica del juego. |
+| **Presentación** | **`src/css/main.css` / `index.html`** | Estilos de la consola y estructura HTML. |
 
-1.  Asegura que todos los archivos estén en la rama `main`.
-2.  Ve a **Settings** > **Pages** en tu repositorio de GitHub.
-3.  Configura la fuente (`Source`) en la rama `main` y la carpeta **`/(root)`**.
+## 🚀 Despliegue y Ejecución
 
-## 💻 Pila Técnica (Stack)
+Dado que es una aplicación estática, el despliegue es inmediato y sin costo.
 
-* **Lenguaje:** JavaScript ES6+
-* **Estructura:** HTML5
-* **Estilo:** CSS3
-* **Pruebas:** Por definir (Jasmine/Jest)
+### Ejecución Local
 
-## 🛠️ Estructura del Código (Por qué es limpio)
+1.  Clona el repositorio:
+    ```bash
+    git clone [https://github.com/LatanVillegasAvelino/commit-drift-static-challenge.git](https://github.com/LatanVillegasAvelino/commit-drift-static-challenge.git)
+    cd commit-drift-static-challenge
+    ```
+2.  Abre el archivo `index.html` en tu navegador favorito.
 
-La lógica principal está segregada en dos archivos clave:
+### Despliegue en GitHub Pages
 
-1.  **`src/js/CommitManager.js`**: Contiene la clase sin dependencias DOM. Define **el modelo de datos** y las reglas del juego (e.g., lógica de `make_commit`, probabilidades, *upgrades*). **Principio del Modelo Puro**.
-2.  **`src/js/main.js`**: Actúa como el *Controller*. Escucha eventos del `index.html` y llama a los métodos de `CommitManager.js`, actualizando el DOM. **Principio de Separación de Intereses (SoC)**.
-3.  
+El juego se publica automáticamente a través de GitHub Actions. Si deseas configurarlo manualmente:
+
+1.  Ve a **Settings** (Configuración) > **Pages**.
+2.  Asegúrate de que la fuente (`Source`) esté configurada para desplegar desde la rama **`main`** y la carpeta **`/(root)`** (Raíz).
+3.  Una vez publicado, tu juego estará accesible en:
+    `https://LatanVillegasAvelino.github.io/commit-drift-static-challenge/`
+
+## 🤝 Contribución
+
+Este proyecto utiliza la licencia **MIT**, promoviendo el software libre y la contribución de la comunidad.
+
+Si encuentras un *bug* (¡irónico!), tienes una sugerencia de mecánica o quieres contribuir con código (ej. implementar la función `ASK REVIEW`), siéntete libre de crear un **Issue** o enviar un **Pull Request**.
