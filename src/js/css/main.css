@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
 
 :root {
-    --color-bg: #1e1e1e;       /* Fondo oscuro */
-    --color-text: #00ff00;     /* Texto verde de terminal */
-    --color-error: #ff3333;    /* Rojo para errores */
-    --color-warning: #ffcc00;  /* Amarillo para advertencias */
+    --color-bg: #1e1e1e;
+    --color-text: #00ff00;
+    --color-error: #ff3333;
+    --color-warning: #ffcc00;
 }
 
 body {
