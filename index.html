@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commit Drift: The Static Repository Challenge</title>
+    <link rel="stylesheet" href="src/css/main.css"> 
+</head>
+<body>
+    <div id="game-container">
+        <h1>Commit Drift: El Reto Estático</h1>
 
+        <div id="status-output" class="dashboard">
+            </div>
+
+        <div id="console-output" class="console">
+            </div>
+
+        <div id="actions">
+            <button id="commit-btn">COMMIT</button>
+            <button id="fix-btn">FIX BUG</button>
+            <button id="review-btn" disabled>ASK REVIEW (Beta)</button>
+        </div>
+
+        <p class="footer">Desarrollado para GitHub Pages. Versión 1.0</p>
+    </div>
+
+    <script src="src/js/CommitManager.js"></script> 
+    <script src="src/js/main.js"></script>
+</body>
+</html>
