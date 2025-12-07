@@ -9,7 +9,7 @@
 }
 
 html, body {
-    /* CORRECCIÓN FINAL: Asegura que el html y el body cubran toda la pantalla */
+    /* Asegura que el html y el body cubran toda la pantalla */
     margin: 0;
     padding: 0;
     height: 100%; 
@@ -21,10 +21,12 @@ body {
     font-family: 'Fira Code', monospace;
     padding: 20px;
     
-    /* Propiedades de centrado y altura mínima */
+    /* MODIFICACIÓN CLAVE: Mantiene el centrado horizontal (justify-content: center;) */
+    /* PERO ELIMINA EL CENTRADO VERTICAL ESTRICTO (align-items: center;) */
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* La línea align-items: center; fue eliminada aquí */
+    
     min-height: 100vh;
     width: 100vw; 
 }
