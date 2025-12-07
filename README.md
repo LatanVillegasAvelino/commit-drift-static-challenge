@@ -8,49 +8,35 @@
 
 **Commit Drift** es un simulador de gestión de riesgos diseñado como una aplicación web estática para **GitHub Pages**.
 
-El jugador asume el rol de un desarrollador en un proyecto con un tiempo limitado y un objetivo de *commits*. La mecánica central obliga a balancear el progreso (`COMMIT`) contra la inevitable acumulación de **Deuda Técnica (Bugs)**. El objetivo es alcanzar la meta de *commits* antes de que el código colapse por el exceso de fallos.
+El jugador asume el rol de un desarrollador, intentando balancear el progreso (`COMMIT`) contra la acumulación inevitable de **Deuda Técnica (Bugs)**. El objetivo es alcanzar la meta de *commits* antes de que el código colapse por el exceso de fallos. El juego promueve la **gestión ética** al obligar al desarrollador a priorizar la calidad sobre la velocidad.
 
 ## ✨ Características Principales
 
-* **Arquitectura Estática Pura (Frontend-Only):** Todo el juego se ejecuta en el navegador (JavaScript, HTML, CSS), eliminando la necesidad de un *backend* y garantizando la máxima portabilidad y un despliegue gratuito.
-* **Mecánica de Riesgo:** Cada `COMMIT` tiene una probabilidad de introducir *Bugs*.
-* **Gestión de Deuda Técnica:** El número de *Bugs* activos aumenta el riesgo de introducir fallos aún más graves en el futuro.
-* **Interfaz de Consola:** Diseño minimalista que simula una interfaz de línea de comandos (CLI) para una inmersión completa.
+* **Arquitectura Consolidada (Frontend-Only):** Todo el código se ejecuta en el navegador (JavaScript, HTML, CSS), eliminando la necesidad de un *backend* y garantizando el despliegue gratuito en GitHub Pages.
+* **Mecánica de Riesgo Progresivo:** Cada `COMMIT` tiene riesgo de introducir *Bugs*. El riesgo aumenta exponencialmente si la **Deuda Técnica** (más de 3 *Bugs*) es ignorada.
+* **Decisión Estratégica:** El jugador debe decidir cuándo invertir tiempo (`FIX BUG`) para reducir el riesgo en lugar de avanzar en el progreso (`COMMIT`).
+* **Interfaz de Consola:** Diseño minimalista que simula una interfaz de línea de comandos (CLI).
 
-## 🛠️ Pila Técnica y Estructura
+## 💻 Pila Técnica y Estructura
 
-El proyecto se basa en los principios de **Código Limpio** y la **Separación de Intereses (SoC)**.
+El proyecto utiliza una arquitectura de **Lógica Consolidada** para máxima fiabilidad en entornos estáticos.
 
-| Componente | Tecnología | Responsabilidad |
+| Componente | Archivo | Responsabilidad |
 | :--- | :--- | :--- |
-| **Lógica Central** | **`src/js/CommitManager.js`** | Contiene la **clase modelo** que maneja las reglas del juego (probabilidades, *bugs*, victoria/derrota). |
-| **Controlador/UI** | **`src/js/main.js`** | Funciona como el **controlador**. Se encarga de la manipulación del DOM y de traducir los clics de los botones en llamadas a la lógica del juego. |
-| **Presentación** | **`src/css/main.css` / `index.html`** | Estilos de la consola y estructura HTML. |
+| **Punto de Entrada** | **`index.html`** | Estructura principal y conexión a los assets. |
+| **Lógica y Controlador** | **`src/js/main.js`** | Contiene la **Clase `CommitManager`** (el modelo de juego) y el código del controlador de UI (manejo de eventos y DOM). |
+| **Presentación** | **`src/css/main.css`** | Define los estilos de la interfaz tipo consola. |
 
 ## 🚀 Despliegue y Ejecución
 
-Dado que es una aplicación estática, el despliegue es inmediato y sin costo.
-
-### Ejecución Local
-
-1.  Clona el repositorio:
-    ```bash
-    git clone [https://github.com/LatanVillegasAvelino/commit-drift-static-challenge.git](https://github.com/LatanVillegasAvelino/commit-drift-static-challenge.git)
-    cd commit-drift-static-challenge
-    ```
-2.  Abre el archivo `index.html` en tu navegador favorito.
+El juego está listo para ser jugado inmediatamente después de un `git push` exitoso.
 
 ### Despliegue en GitHub Pages
 
-El juego se publica automáticamente a través de GitHub Actions. Si deseas configurarlo manualmente:
-
-1.  Ve a **Settings** (Configuración) > **Pages**.
-2.  Asegúrate de que la fuente (`Source`) esté configurada para desplegar desde la rama **`main`** y la carpeta **`/(root)`** (Raíz).
-3.  Una vez publicado, tu juego estará accesible en:
+1.  Asegúrate de que la fuente (`Source`) en **Settings** > **Pages** esté configurada en la rama **`main`** y la carpeta **`/(root)`**.
+2.  Una vez publicado, tu juego estará accesible en:
     `https://LatanVillegasAvelino.github.io/commit-drift-static-challenge/`
 
 ## 🤝 Contribución
 
-Este proyecto utiliza la licencia **MIT**, promoviendo el software libre y la contribución de la comunidad.
-
-Si encuentras un *bug* (¡irónico!), tienes una sugerencia de mecánica o quieres contribuir con código (ej. implementar la función `ASK REVIEW`), siéntete libre de crear un **Issue** o enviar un **Pull Request**.
+Este proyecto utiliza la licencia **MIT**, promoviendo el software libre y la contribución de la comunidad. Siéntete libre de crear un **Issue** para sugerir nuevas características o enviar un **Pull Request** con correcciones de código.
